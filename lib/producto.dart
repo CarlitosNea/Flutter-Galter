@@ -13,7 +13,7 @@ class _ProductoState extends State<Producto> {
   List<dynamic> datos = [];
 
   Future<void> consultaProducto() async {
-    final url = Uri.parse("direccion/producto");
+    final url = Uri.parse("http://10.190.80.47/Producto");
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -44,12 +44,15 @@ class _ProductoState extends State<Producto> {
         itemBuilder: (context, index) {
           final item = datos [index];
           return ListTile(
-            title: Text(item['']),
+            title: Text(item['codi_prod']),
             subtitle: Row(
               children: [
-                Text(item['']),
-                SizedBox(height: 10,),
-                Text(item['']),
+                Text('Nombre: '),
+                Text(item['nomb_prod']),
+                SizedBox(height: 30,),
+                SizedBox(width: 20,),
+                Text('Material'),
+                Text(item['material_prod']),
               ],
             ),
           );

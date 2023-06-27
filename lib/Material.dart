@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:galter/insertarMaterial.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as HP;
 
@@ -13,7 +14,7 @@ class _materialState extends State<material> {
   List<dynamic> datos = [];
 
   Future<void> consultaMaterial() async {
-    final url = Uri.parse("direccion/material");
+    final url = Uri.parse('http://10.190.80.47/Material');
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -40,21 +41,45 @@ class _materialState extends State<material> {
       appBar: AppBar(
         title: Text('Materiales'),
       ),
-      body: ListView.builder(itemCount: datos.length,
-        itemBuilder: (context, index) {
-          final item = datos [index];
-          return ListTile(
-            title: Text(item['']),
-            subtitle: Row(
-              children: [
-                Text(item['']),
-                SizedBox(height: 10,),
-                Text(item['']),
-              ],
-            ),
-          );
-        },
-      ),
+      body: Stack(
+        children: [
+          ListView.builder(itemCount: datos.length,
+            itemBuilder: (context, index) {
+              final item = datos [index];
+              return ListTile(
+                title: Text(item['codi_mate']),
+                subtitle: Row(
+                  children: [
+                    Text('Nombre: '),
+                    Text(item['nomb_mate']),
+                    SizedBox(height: 30,),
+                    SizedBox(width: 20,),
+                    Text('Stock: '),
+                    Text(item['cant_mate']),
+                  ],
+                ),
+              );
+            },
+          ),
+          Positioned(
+              bottom: 50.0,
+              right: 40.0,
+              child: Container(
+                width: 50,
+                height: 50,
+                child: ElevatedButton.icon(
+                    onPressed: (){
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => insMaterial()),
+                      );
+                    },
+                    icon: Icon(Icons.add),
+                    label: Text("")),
+              )
+          )
+        ],
+      )
+
     );
   }
 }

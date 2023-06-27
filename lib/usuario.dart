@@ -13,7 +13,7 @@ class _UsuarioState extends State<Usuario> {
   List<dynamic> datos = [];
 
   Future<void> consultaUsuario() async {
-    final url = Uri.parse("direccion/usuario");
+    final url = Uri.parse("http://10.190.80.47/Usuario");
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -44,12 +44,17 @@ class _UsuarioState extends State<Usuario> {
         itemBuilder: (context, index) {
           final item = datos [index];
           return ListTile(
-            title: Text(item['']),
+            title: Text(item['codi_usuario'].toString()),
             subtitle: Row(
               children: [
-                Text(item['']),
-                SizedBox(height: 10,),
-                Text(item['']),
+                Text('Nombre: '),
+                Text(item['nombre_usuario']),
+                SizedBox(height: 30,),
+                SizedBox(width: 20,),
+                Text(item['correo_usuario']),
+                SizedBox(width: 20,),
+                Text('Tipo '),
+                Text(item['tipo_usuario']),
               ],
             ),
           );

@@ -19,9 +19,11 @@ class _HomeState extends State<Home> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          SizedBox(height: 140,),
           Container(
             margin: EdgeInsets.only(left: 40,right: 40),
-            height: 80,
+            height: 50,
+            width: 150,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -33,11 +35,12 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          SizedBox(height: 15,),
+          SizedBox(height: 40,),
 
           Container(
             margin: EdgeInsets.only(left: 40,right: 40),
-            height: 80,
+            height: 50,
+            width: 150,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -49,11 +52,12 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          SizedBox(height: 15,),
+          SizedBox(height: 40,),
 
           Container(
             margin: EdgeInsets.only(left: 40,right: 40),
-            height: 80,
+            height: 50,
+            width: 150,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -65,11 +69,12 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          SizedBox(height: 15,),
+          SizedBox(height: 40,),
 
           Container(
             margin: EdgeInsets.only(left: 40,right: 40),
-            height: 80,
+            height: 50,
+            width: 150,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -81,11 +86,12 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          SizedBox(height: 15,),
+          SizedBox(height: 40,),
 
           Container(
             margin: EdgeInsets.only(left: 40,right: 40),
-            height: 80,
+            height: 50,
+            width: 150,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -97,11 +103,12 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          SizedBox(height: 15,),
+          SizedBox(height: 40,),
 
           Container(
             margin: EdgeInsets.only(left: 40,right: 40),
-            height: 80,
+            height: 50,
+            width: 150,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -112,9 +119,6 @@ class _HomeState extends State<Home> {
               child: Text("Proveedor"),
             ),
           ),
-
-          SizedBox(height: 30,),
-
         ],
       ),
     );

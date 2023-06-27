@@ -13,7 +13,7 @@ class _ProveedorState extends State<Proveedor> {
   List<dynamic> datos = [];
 
   Future<void> consultaProveedor() async {
-    final url = Uri.parse("direccion/proveedor");
+    final url = Uri.parse('http://10.190.80.47/Proveedor');
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -44,12 +44,12 @@ class _ProveedorState extends State<Proveedor> {
         itemBuilder: (context, index) {
           final item = datos [index];
           return ListTile(
-            title: Text(item['']),
+            title: Text(item['nombre_proveedor']),
             subtitle: Row(
               children: [
-                Text(item['']),
-                SizedBox(height: 10,),
-                Text(item['']),
+                SizedBox(height: 30,),
+                Text("Telefono: "),
+                Text(item['telefono_proveedor']),
               ],
             ),
           );
