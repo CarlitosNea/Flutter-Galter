@@ -13,7 +13,7 @@ class _UsuarioState extends State<Usuario> {
   List<dynamic> datos = [];
 
   Future<void> consultaUsuario() async {
-    final url = Uri.parse("http://10.190.80.47/Usuario");
+    final url = Uri.parse("http://10.190.88.151/Usuario");
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {

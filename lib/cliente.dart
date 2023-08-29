@@ -15,7 +15,7 @@ class _ClienteState extends State<Cliente> {
   List<dynamic> datos=[];
 
   Future<void> consultaCliente() async{
-    final url = Uri.parse('http://10.190.80.47/Cliente');
+    final url = Uri.parse('http://10.190.88.151/Cliente');
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200){
