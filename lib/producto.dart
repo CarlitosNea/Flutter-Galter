@@ -13,7 +13,7 @@ class _ProductoState extends State<Producto> {
   List<dynamic> datos = [];
 
   Future<void> consultaProducto() async {
-    final url = Uri.parse("http://192.168.135.43/produc");
+    final url = Uri.parse("http://10.190.88.120/produc");
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -38,26 +38,102 @@ class _ProductoState extends State<Producto> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Productos'),
+        title: Text(
+          'Productos',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(15, 27, 81, 1),
       ),
-      body: ListView.builder(itemCount: datos.length,
-        itemBuilder: (context, index) {
-          final item = datos [index];
-          return ListTile(
-            title: Text(item['codi_prod']),
-            subtitle: Row(
-              children: [
-                Text('Nombre: '),
-                Text(item['nomb_prod']),
-                SizedBox(height: 30,),
-                SizedBox(width: 20,),
-                Text('Material'),
-                Text(item['material_prod']),
-              ],
+      body: Container(
+        margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Color.fromRGBO(15, 27, 81, 1),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(1),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: Offset(0, 2),
             ),
-          );
-        },
+          ],
+        ),
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: DataTable(
+                columnSpacing: 10,
+                headingRowColor:
+                MaterialStateColor.resolveWith((states) => Colors.grey),
+                columns: [
+                  DataColumn(
+                    label: Text(
+                      'Código',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Text(
+                      'Nombre',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Text(
+                      'Material',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ],
+                rows: datos.map((item) {
+                  return DataRow(
+                    cells: [
+                      DataCell(
+                        Text(
+                          item['codi_prod'],
+                          style: TextStyle(color: Colors.white), // Texto blanco
+                        ),
+                      ),
+                      DataCell(
+                        Padding(
+                          padding: EdgeInsets.only(right: 30),
+                          child: Text(
+                            item['nomb_prod'],
+                            style: TextStyle(color: Colors.white), // Texto blanco
+                          ),
+                        ),
+                      ),
+                      DataCell(
+                        Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text(
+                            item['material_prod'],
+                            style: TextStyle(color: Colors.white), // Texto blanco
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
       ),
     );
+
+
+
+
+
+
+
+
   }
 }

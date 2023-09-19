@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:galter/insertarMaterial.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as HP;
 
@@ -14,7 +13,7 @@ class _materialState extends State<material> {
   List<dynamic> datos = [];
 
   Future<void> consultaMaterial() async {
-    final url = Uri.parse('http://192.168.135.43/Material');
+    final url = Uri.parse('http://10.190.88.120/matt');
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -37,49 +36,120 @@ class _materialState extends State<material> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Materiales'),
-      ),
-      body: Stack(
-        children: [
-          ListView.builder(itemCount: datos.length,
-            itemBuilder: (context, index) {
-              final item = datos [index];
-              return ListTile(
-                title: Text(item['codi_mate']),
-                subtitle: Row(
-                  children: [
-                    Text('Nombre: '),
-                    Text(item['nomb_mate']),
-                    SizedBox(height: 30,),
-                    SizedBox(width: 20,),
-                    Text('Stock: '),
-                    Text(item['cant_mate']),
-                  ],
-                ),
-              );
-            },
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Materiales',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          Positioned(
-              bottom: 50.0,
-              right: 40.0,
-              child: Container(
-                width: 50,
-                height: 50,
-                child: ElevatedButton.icon(
-                    onPressed: (){
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => insMaterial()),
-                      );
-                    },
-                    icon: Icon(Icons.add),
-                    label: Text("")),
-              )
-          )
-        ],
-      )
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(15, 27, 81, 1),
+        ),
+        body: Container(
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromRGBO(15, 27, 81, 1),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(1),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: DataTable(
+                  columnSpacing: 40,
+                  headingRowColor:
+                  MaterialStateColor.resolveWith((states) => Colors.grey),
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        'Código',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Nombre',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Cantidad',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Proveedor',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                  rows: datos.map((item) {
+                    return DataRow(
+                      cells: [
+                        DataCell(
+                          Text(
+                            item['codi_mate'],
+                            style: TextStyle(
+                                color: Colors.white), // Texto blanco
+                          ),
+                        ),
+                        DataCell(
+                          Padding(
+                            padding: EdgeInsets.only(right: 30),
+                            child: Text(
+                              item['nomb_mate'],
+                              style: TextStyle(
+                                  color: Colors.white), // Texto blanco
+                            ),
+                          ),
+                        ),
+                        DataCell(
+                          Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text(
+                              item['cant_mate'],
+                              style: TextStyle(
+                                  color: Colors.white), // Texto blanco
+                            ),
+                          ),
+                        ),
+                        DataCell(
+                          Padding(
+                            padding: EdgeInsets.only(right: 30),
+                            child: Text(
+                              item['proveedor_mate'],
+                              style: TextStyle(
+                                  color: Colors.white), // Texto blanco
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }).toList(),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
 
-    );
+
+
+
+
   }
 }
