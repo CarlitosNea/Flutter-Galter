@@ -13,7 +13,7 @@ class _materialState extends State<material> {
   List<dynamic> datos = [];
 
   Future<void> consultaMaterial() async {
-    final url = Uri.parse('http://10.190.88.120/matt');
+    final url = Uri.parse('http://192.168.1.87/matt');
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -68,9 +68,12 @@ class _materialState extends State<material> {
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: DataTable(
-                  columnSpacing: 40,
+                  columnSpacing: 50,
                   headingRowColor:
                   MaterialStateColor.resolveWith((states) => Colors.grey),
+                  border: TableBorder(
+                    horizontalInside: BorderSide(color: Colors.white, width: 3), // Borde horizontal
+                  ),
                   columns: [
                     DataColumn(
                       label: Text(
@@ -119,7 +122,7 @@ class _materialState extends State<material> {
                         ),
                         DataCell(
                           Padding(
-                            padding: EdgeInsets.only(left: 10),
+                            padding: EdgeInsets.only(left: 15),
                             child: Text(
                               item['cant_mate'],
                               style: TextStyle(
@@ -129,7 +132,7 @@ class _materialState extends State<material> {
                         ),
                         DataCell(
                           Padding(
-                            padding: EdgeInsets.only(right: 30),
+                            padding: EdgeInsets.only(right: 40),
                             child: Text(
                               item['proveedor_mate'],
                               style: TextStyle(

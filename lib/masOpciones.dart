@@ -8,21 +8,34 @@ class masOpciones extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Opciones',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(100, 9, 88, 1),
+      ),
       body: Container(
         color: Color.fromRGBO(15, 27, 81, 1),
         padding: EdgeInsets.all(30),
-        child: Column(
-          children: [
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
             Column(
               children: [
+
                 Container(
-                  margin: EdgeInsets.only(top: 30),
+                  margin: EdgeInsets.only(top: 10),
                   width: 350,
-                  height: 80,
+                  height: 60,
                   color: Colors.white,
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 40, left: 10),
+                  margin: EdgeInsets.only(top: 45, left: 10),
                   height: 180,
                   width: 380,
                   decoration: BoxDecoration(
@@ -200,6 +213,7 @@ class masOpciones extends StatelessWidget {
               ],
             )
           ],
+          )
         ),
       ),
 

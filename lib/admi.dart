@@ -24,7 +24,7 @@ class _IniciarSesionViewState extends State<IniciarSesionView> {
     print('dos');
     try{
       final response = await HP.post(
-          Uri.parse('http://10.190.88.120/iniciarSesion'),
+          Uri.parse('http://192.168.1.87/iniciarSesion'),
           headers: {
             'content-type' : 'application/json'
           },

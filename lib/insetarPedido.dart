@@ -24,7 +24,7 @@ class _insPedidoState extends State<insPedido> {
 
   void _enviarFormularioPed() async{
     if (_formkey.currentState!.validate()){
-      final String apiUrl="http://10.190.80.47/insertarPedi/";
+      final String apiUrl="http://192.168.1.87/insertarPedi/";
       final Map<String, dynamic> requestBody={
         'id_pedido' : _idPedidoController.text,
         'cliente_pedido' : _clientePedidoController.text,
