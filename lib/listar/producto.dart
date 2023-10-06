@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:galter/actualizarProd.dart';
+import 'package:galter/eliminar/eliminarProd.dart';
 import 'package:galter/home.dart';
-import 'package:galter/insertarProducto.dart';
+import 'package:galter/insertar/insertarProducto.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as HP;
 
@@ -15,7 +17,7 @@ class _ProductoState extends State<Producto> {
   List<dynamic> datos = [];
 
   Future<void> consultaProducto() async {
-    final url = Uri.parse("http://192.168.1.87/produc");
+    final url = Uri.parse("http://192.168.35.43/produc");
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
@@ -61,6 +63,28 @@ class _ProductoState extends State<Producto> {
                 Column(
                   children: [
                     IconButton(
+                      icon: Icon(Icons.home_outlined),
+                      color: Colors.indigo,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                        );
+                      },
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
                       icon: Icon(Icons.add_box_outlined),
                       color: Colors.indigo,
                       onPressed: () {
@@ -88,7 +112,7 @@ class _ProductoState extends State<Producto> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => insertarProd()),
+                          MaterialPageRoute(builder: (context) => ActualizarProducto()),
                         );
                       },
                     ),
@@ -108,7 +132,10 @@ class _ProductoState extends State<Producto> {
                       icon: Icon(Icons.delete_forever_outlined),
                       color: Colors.indigo,
                       onPressed: () {
-                        // Acción al hacer clic en Escuela
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EliminarProducto()),
+                        );
                       },
                     ),
                     Text(
@@ -125,7 +152,7 @@ class _ProductoState extends State<Producto> {
             ),
           ),
 
-          // Lista debajo de la barra de navegación
+
           Expanded(
             child: Container(
               margin: EdgeInsets.all(10),
@@ -147,12 +174,12 @@ class _ProductoState extends State<Producto> {
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: DataTable(
-                      columnSpacing: 40,
+                      columnSpacing: 30,
                       headingRowColor: MaterialStateColor.resolveWith(
-                              (states) => Colors.grey),
+                            (states) => Colors.grey,
+                      ),
                       border: TableBorder(
-                        horizontalInside:
-                        BorderSide(color: Colors.white, width: 3),
+                        horizontalInside: BorderSide(color: Colors.white, width: 3),
                       ),
                       columns: [
                         DataColumn(
@@ -169,9 +196,30 @@ class _ProductoState extends State<Producto> {
                         ),
                         DataColumn(
                           label: Text(
+                            'Tiempo',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          numeric: true,
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Longitud',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          numeric: true,
+                        ),
+                        DataColumn(
+                          label: Text(
                             'Material',
                             style: TextStyle(color: Colors.black),
                           ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Precio',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          numeric: true,
                         ),
                       ],
                       rows: datos.map((item) {
@@ -188,7 +236,7 @@ class _ProductoState extends State<Producto> {
                             ),
                             DataCell(
                               Padding(
-                                padding: EdgeInsets.only(right: 20),
+                                padding: EdgeInsets.only(right: 1),
                                 child: Text(
                                   item['nomb_prod'],
                                   style: TextStyle(color: Colors.white),
@@ -197,9 +245,36 @@ class _ProductoState extends State<Producto> {
                             ),
                             DataCell(
                               Padding(
-                                padding: EdgeInsets.only(left: 20),
+                                padding: EdgeInsets.only(right: 20),
+                                child: Text(
+                                  item['tiempo_prod'],
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Padding(
+                                padding: EdgeInsets.only(right: 10),
+                                child: Text(
+                                  item['long_prod'],
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Padding(
+                                padding: EdgeInsets.only(left: 50),
                                 child: Text(
                                   item['material_prod'],
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  item['prec_prod'],
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
@@ -211,6 +286,7 @@ class _ProductoState extends State<Producto> {
                   ),
                 ],
               ),
+
             ),
           ),
         ],

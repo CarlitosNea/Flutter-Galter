@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:galter/insertarMaterial.dart';
-import 'package:galter/insertarProducto.dart';
-import 'package:galter/insetarPedido.dart';
-import 'package:galter/producto.dart';
+import 'package:galter/actualizarProd.dart';
+import 'package:galter/eliminar/eliminarProd.dart';
+import 'package:galter/insertar/insertarMaterial.dart';
+import 'package:galter/insertar/insertarProducto.dart';
+import 'package:galter/insertar/insetarPedido.dart';
+import 'package:galter/listar/producto.dart';
 
 class opcionesProd extends StatelessWidget {
   const opcionesProd({Key? key}) : super(key: key);
@@ -73,7 +75,7 @@ class opcionesProd extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => opcionesProd()),
+                            MaterialPageRoute(builder: (context) => insertarProd()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -114,7 +116,7 @@ class opcionesProd extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Material()),
+                            MaterialPageRoute(builder: (context) => ActualizarProducto()),
                           );
                         },
                         child: Container(
@@ -133,7 +135,7 @@ class opcionesProd extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Material()),
+                            MaterialPageRoute(builder: (context) => ActualizarProducto())
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -174,7 +176,7 @@ class opcionesProd extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Producto()),
+                            MaterialPageRoute(builder: (context) => EliminarProducto()),
                           );
                         },
                         child: Container(
@@ -193,7 +195,7 @@ class opcionesProd extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Producto()),
+                            MaterialPageRoute(builder: (context) => EliminarProducto()),
                           );
                         },
                         style: ElevatedButton.styleFrom(

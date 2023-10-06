@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:galter/admi.dart';
-import 'package:galter/insertarUser.dart';
+import 'package:galter/insertar/insertarUser.dart';
 
 class Principal extends StatefulWidget {
   const Principal({Key? key}) : super(key: key);

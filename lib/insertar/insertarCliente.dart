@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as HP;
-import 'cliente.dart';
+import '../listar/cliente.dart';
 
 class insCliente extends StatefulWidget {
   const insCliente({Key? key}) : super(key: key);

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:galter/listar/Material.dart';
+import 'package:galter/opcionesMate.dart';
 import 'package:galter/opcionesProd.dart';
-import 'package:galter/producto.dart';
+import 'package:galter/listar/producto.dart';
 
 class masOpciones extends StatelessWidget {
   const masOpciones({Key? key}) : super(key: key);
@@ -17,23 +19,22 @@ class masOpciones extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(100, 9, 88, 1),
+        backgroundColor: Color.fromRGBO(15, 27, 81, 1),
       ),
       body: Container(
-        color: Color.fromRGBO(15, 27, 81, 1),
+        color: Colors.white,
         padding: EdgeInsets.all(30),
         child: SingleChildScrollView(
           child: Column(
             children: [
             Column(
               children: [
-
-                Container(
-                  margin: EdgeInsets.only(top: 10),
-                  width: 350,
-                  height: 60,
-                  color: Colors.white,
-                ),
+                // Container(
+                //   margin: EdgeInsets.only(top: 10),
+                //   width: 350,
+                //   height: 60,
+                //   color: Colors.black,
+                // ),
                 Container(
                   margin: EdgeInsets.only(top: 45, left: 10),
                   height: 180,
@@ -45,6 +46,14 @@ class masOpciones extends StatelessWidget {
                       color: Colors.white,
                       width: 2,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(15, 27, 81, 1).withOpacity(1),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: Offset(0, 5),
+                      ),
+                    ],
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,19 +101,25 @@ class masOpciones extends StatelessWidget {
                 ),
 
 
-
-
                 Container(
                   margin: EdgeInsets.only(top: 40, left: 10),
                   height: 180,
                   width: 380,
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color:Colors.black,
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                       color: Colors.white,
                       width: 2,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(15, 27, 81, 1).withOpacity(1),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: Offset(0, 5),
+                      ),
+                    ],
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,7 +128,7 @@ class masOpciones extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Material()),
+                            MaterialPageRoute(builder: (context) => opcionesMate()),
                           );
                         },
                         child: Container(
@@ -132,7 +147,7 @@ class masOpciones extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Material()),
+                            MaterialPageRoute(builder: (context) => opcionesMate()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -165,6 +180,14 @@ class masOpciones extends StatelessWidget {
                       color: Colors.white,
                       width: 2,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(15, 27, 81, 1).withOpacity(1),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: Offset(0, 5),
+                      ),
+                    ],
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

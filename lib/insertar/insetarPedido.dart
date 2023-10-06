@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as HP;
-import 'pedido.dart';
+import '../listar/pedido.dart';
 
 class insPedido extends StatefulWidget {
   const insPedido({Key? key}) : super(key: key);

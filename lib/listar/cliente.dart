@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:galter/insertarCliente.dart';
+import 'package:galter/insertar/insertarCliente.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as HP;
 

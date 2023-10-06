@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:galter/Material.dart';
+import 'package:galter/listar/Material.dart';
 import 'package:galter/masOpciones.dart';
 import 'package:galter/principal.dart';
-import 'package:galter/producto.dart';
+import 'package:galter/listar/producto.dart';
 
 class Home extends StatelessWidget {
   @override
