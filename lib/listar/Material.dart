@@ -19,7 +19,7 @@ class _materialState extends State<material> {
   List<dynamic> datos = [];
 
   Future<void> consultaMaterial() async {
-    final url = Uri.parse('http://192.168.86.43/matt');
+    final url = Uri.parse('http://192.168.20.43/matt');
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {

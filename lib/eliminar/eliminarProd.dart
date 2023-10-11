@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:galter/home.dart';
 import 'package:galter/listar/Material.dart';
+import 'package:galter/listar/producto.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -8,7 +9,7 @@ class EliminarProducto extends StatelessWidget {
   final TextEditingController _codigoController = TextEditingController();
 
   Future<void> _eliminarProducto(BuildContext context, String codigo) async {
-    final apiUrl = "http://192.168.35.43/eliminar_prod/";
+    final apiUrl = "http://192.168.20.43/eliminar_prod/";
 
     try {
       final response = await http.delete(
@@ -29,7 +30,7 @@ class EliminarProducto extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
-                    Navigator.of(context).pushReplacementNamed('/Home');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Producto()));
                   },
                   child: Text("OK"),
                 ),
@@ -57,7 +58,6 @@ class EliminarProducto extends StatelessWidget {
         );
       }
     } catch (error) {
-      // Error de conexión o decodificación
       print("Error: $error");
     }
   }
@@ -110,7 +110,7 @@ class EliminarProducto extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => material()),
+                              MaterialPageRoute(builder: (context) => Producto()),
                             );
                           },
                         ),
@@ -160,8 +160,8 @@ class EliminarProducto extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                primary: Colors.black, // Fondo negro
-                minimumSize: Size(100, 50), // Tamaño mínimo del botón
+                primary: Colors.black,
+                minimumSize: Size(100, 50),
               ),
               child: Text(
                 "Eliminar Producto",

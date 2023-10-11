@@ -8,7 +8,7 @@ class EliminarMaterial extends StatelessWidget {
   final TextEditingController _codigoController = TextEditingController();
 
   Future<void> _EliminarMaterial(BuildContext context, String codigo) async {
-    final apiUrl = "http://192.168.35.43/eliminar_mate/";
+    final apiUrl = "http://192.168.20.43/eliminar_mate/";
 
     try {
       final response = await http.delete(

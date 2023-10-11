@@ -18,6 +18,7 @@ class _IniciarSesionViewState extends State<IniciarSesionView> {
   Future<void> _enviarInicioSesion() async{
     print("entrada 1");
     final Map<String, String> data ={
+
       'username' : _usernameController.text,
       'password' : _passwordController.text,
     };

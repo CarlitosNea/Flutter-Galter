@@ -14,7 +14,7 @@ class _PedidoState extends State<Pedido> {
   List<dynamic> datos = [];
 
   Future<void> consultaPedido() async {
-    final url = Uri.parse('http://192.168.1.87/Pedido');
+    final url = Uri.parse('http://192.168.20.43/Pedido');
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {

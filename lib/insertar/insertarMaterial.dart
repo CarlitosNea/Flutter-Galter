@@ -24,7 +24,7 @@ class _insMaterialState extends State<insMaterial> {
 
   void _enviarFormularioMate() async{
     if (_formkey.currentState!.validate()){
-      final String apiUrl="http://192.168.35.43/insertarMate/";
+      final String apiUrl="http://192.168.20.43/insertarMate/";
       final Map<String, dynamic> requestBody={
         'codi_mate' : _codigoMaterialController.text,
         'nomb_mate' : _nombreMaterialController.text,

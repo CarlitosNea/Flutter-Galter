@@ -26,7 +26,7 @@ class _insertarProdState extends State<insertarProd> {
 
   void _enviarFormularioProd() async{
     if (_formkey.currentState!.validate()){
-      final String apiUrl="http://192.168.35.43/insertarProd/";
+      final String apiUrl="http://192.168.20.43/insertarProd/";
       final Map<String, dynamic> requestBody={
         'codi_prod' : _codiProdController.text,
         'nomb_prod' : _nombreProdController.text,

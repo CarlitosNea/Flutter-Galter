@@ -17,7 +17,7 @@ class _ProductoState extends State<Producto> {
   List<dynamic> datos = [];
 
   Future<void> consultaProducto() async {
-    final url = Uri.parse("http://192.168.35.43/produc");
+    final url = Uri.parse("http://192.168.20.43/produc");
     final respuesta = await HP.get(url);
 
     if (respuesta.statusCode == 200) {
